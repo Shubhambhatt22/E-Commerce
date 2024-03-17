@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-
+import {
+  faMagnifyingGlass,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = ({ handleCategory, handleSearch }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -34,15 +38,16 @@ const Navbar = ({ handleCategory, handleSearch }) => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     handleSearch(search);
+    setSearch("");
   };
 
   return (
     <div className="relative pb-4">
-      {/* Additional text */}
-      <div className="absolute top-48 left-1/2 transform -translate-x-1/2 text-white text-center font-bold text-4xl z-10">
+      <div className="absolute top-60  left-1/2 transform -translate-x-1/2 text-white text-center font-bold md:text-4xl  z-10">
         GET START <br />
         YOUR FAVORITE SHOPPING
       </div>
+
       {/* Background image */}
       <img
         src="/images/bg1.jpg"
@@ -52,24 +57,24 @@ const Navbar = ({ handleCategory, handleSearch }) => {
       {/* Navbar */}
       <nav className="absolute top-14 left-0 right-0 bg-opacity-50 p-4">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-          <a href="#" className="text-white font-semibold text-lg mb-2 md:mb-0">
+          <a href="#" className="text-white font-semibold text-xl mb-2 md:mb-0">
             e-commerce
           </a>
           {/* Search Bar */}
-          <div className="relative mb-2 md:mb-0 md:mr-4">
-            <form onSubmit={handleSearchSubmit}>
+          <div className="relative mb-2 md:mb-0 md:mr-4 flex items-center">
+            <form onSubmit={handleSearchSubmit} className="flex items-center">
               <input
                 type="text"
                 placeholder="Search..."
                 value={search}
                 onChange={handleSearchChange}
-                className="bg-white text-black-400 rounded-md px-4 py-2 md:px-20 focus:outline-none focus:ring focus:ring-blue-500"
+                className="bg-white text-black-400 rounded-md px-8 py-2 md:ml-60 focus:outline-none focus:ring focus:ring-blue-500"
               />
               <button
                 type="submit"
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-600 text-white px-4 py-2 md:px-8 rounded-md"
+                className="bg-gray-800 text-white px-7 py-2 rounded-md ml-0"
               >
-                {/* <FontAwesomeIcon icon="fa-brands fa-react" /> */}
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
               </button>
             </form>
           </div>
@@ -99,6 +104,11 @@ const Navbar = ({ handleCategory, handleSearch }) => {
                 ))}
               </ul>
             </div>
+          </div>
+          <div>
+            <button className="text-white font-bold text-lg hover:text-gray-300 focus:outline-none mr-12">
+              <FontAwesomeIcon icon={faShoppingCart} size="lg" /> Cart
+            </button>
           </div>
         </div>
       </nav>
