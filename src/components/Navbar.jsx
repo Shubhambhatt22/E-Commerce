@@ -50,7 +50,7 @@ const Navbar = ({ handleCategory, handleSearch }) => {
 
       {/* Background image */}
       <img
-        src="/images/bg1.jpg"
+        src="/images/bg2.jpg"
         alt="Background"
         className="absolute inset-0 w-full h-96 object-cover"
       />
